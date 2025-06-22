@@ -9,7 +9,7 @@ pub mod lsp;
 pub mod output;
 
 pub use analyzer::CallGraph;
-pub use config::{Config, CliArgs};
+pub use config::{CliArgs, Config};
 pub use lsp::LspClient;
 pub use output::DotGenerator;
 
@@ -21,16 +21,16 @@ pub type Result<T> = std::result::Result<T, Box<dyn std::error::Error + Send + S
 pub enum CallGraphError {
     #[error("LSP communication error: {0}")]
     LspError(#[from] tower_lsp::jsonrpc::Error),
-    
+
     #[error("IO error: {0}")]
     IoError(#[from] std::io::Error),
-    
+
     #[error("Configuration error: {0}")]
     ConfigError(String),
-    
+
     #[error("Analysis error: {0}")]
     AnalysisError(String),
-    
+
     #[error("Output generation error: {0}")]
     OutputError(String),
 }

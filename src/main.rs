@@ -1,5 +1,5 @@
-use call_graph_generator::{Config, LspClient, CallGraph, DotGenerator, Result};
-use tracing::{info, error};
+use call_graph_generator::{CallGraph, Config, DotGenerator, LspClient, Result};
+use tracing::{error, info};
 
 #[tokio::main]
 async fn main() -> Result<()> {
@@ -10,7 +10,7 @@ async fn main() -> Result<()> {
 
     // Parse command line arguments
     let args = Config::parse();
-    
+
     info!("Starting CallGraphGenerator");
     info!("Configuration: {:?}", args);
 
@@ -32,17 +32,20 @@ async fn run_analysis(config: Config) -> Result<()> {
     // Step 1: Initialize LSP client
     info!("Initializing LSP client");
     let mut lsp_client = LspClient::new(&config).await?;
-    
+
     // Step 2: Perform analysis
     info!("Performing call graph analysis");
     let call_graph = CallGraph::analyze(&mut lsp_client, &config).await?;
-    
+
     // Step 3: Generate output
     info!("Generating output");
     let dot_generator = DotGenerator::new(&config);
     dot_generator.generate(&call_graph, &config.output_path)?;
-    
-    info!("Call graph generated successfully at: {}", config.output_path);
-    
+
+    info!(
+        "Call graph generated successfully at: {}",
+        config.output_path
+    );
+
     Ok(())
 }

@@ -1,0 +1,8 @@
+digraph CallGraph {
+    rankdir=TB;
+    
+    // Placeholder call graph
+    "main::main" [label="main", shape=box, style=filled, fillcolor=lightblue];
+    
+    // TODO: Generate actual nodes and edges from call graph
+}

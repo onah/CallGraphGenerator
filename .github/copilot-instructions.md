@@ -133,8 +133,14 @@ pub fn build_call_graph(kaiseki_kekka: &AnalysisResult) -> CallGraph {
 ### Commit Messages
 - Write commit messages in English
 - Use imperative mood ("Add feature" not "Added feature")
+- **Prefer single-line commit messages when possible**
 - Keep the first line under 50 characters
-- Provide detailed explanation in the commit body when necessary
+- Use concise, descriptive language that clearly explains the change
+- Provide detailed explanation in the commit body only when necessary for complex changes
+- Examples of good single-line commits:
+  - `Add comprehensive test suite with 17 unit tests`
+  - `Fix clippy warnings by deriving Default for ConfigFile`
+  - `Implement basic DOT file generation with placeholder content`
 
 ### Branch Naming
 - Use descriptive branch names in English
