@@ -73,6 +73,44 @@ pub fn build_call_graph(kaiseki_kekka: &AnalysisResult) -> CallGraph {
 - Document the purpose of each dependency in `Cargo.toml`
 - Keep dependencies minimal and avoid unnecessary bloat
 
+## Development Approach
+
+### Incremental Implementation
+- **Implement features step-by-step** rather than attempting large changes at once
+- Focus on one module or feature at a time
+- Ensure each increment builds and passes tests before moving to the next
+- Prefer working, simple implementations over complex, incomplete ones
+
+### Implementation Strategy
+- Start with basic functionality and gradually add complexity
+- Implement placeholder functions that return meaningful defaults
+- Add TODO comments for future enhancements
+- Maintain a working build at each step
+
+### Testing-Driven Development
+- Write tests alongside implementation, not as an afterthought
+- Add tests for new functionality as it's implemented
+- Ensure all tests pass before committing changes
+- Use placeholder tests for incomplete functionality
+
+### Commit Frequency
+- Make small, frequent commits for each logical change
+- Each commit should represent a complete, working increment
+- Avoid large commits that combine multiple unrelated changes
+- Use descriptive commit messages that explain the increment
+
+### Documentation Updates
+- Update documentation as features are implemented
+- Keep README examples in sync with actual functionality
+- Add inline documentation for new public APIs
+- Update architecture diagrams when structure changes
+
+### Code Quality Maintenance
+- Run `cargo clippy` and fix warnings after each change
+- Ensure `cargo test` passes before each commit
+- Format code with `rustfmt` regularly
+- Review code for potential improvements during implementation
+
 ## LSP Integration Guidelines
 
 ### Communication Protocol
